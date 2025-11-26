@@ -6,8 +6,24 @@ class ProductRepository {
   static const String _tableName = 'products';
 
   Future<List<Product>> getAll() async {
-    final response = await _client.from(_tableName).select().order('createdAt', ascending: false);
-    return (response as List).map((json) => Product.fromJson(json)).toList();
+    try {
+      final response = await _client.from(_tableName).select().order('created_at', ascending: false);
+      if (response == null) {
+        return [];
+      }
+      return (response as List).map((json) {
+        try {
+          return Product.fromJson(json as Map<String, dynamic>);
+        } catch (e) {
+          print('Erro ao parsear produto: $e');
+          print('JSON: $json');
+          rethrow;
+        }
+      }).toList();
+    } catch (e) {
+      print('Erro ao buscar produtos: $e');
+      rethrow;
+    }
   }
 
   Future<Product?> getById(int id) async {

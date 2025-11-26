@@ -6,12 +6,12 @@ class CountRepository {
   static const String _tableName = 'counts';
 
   Future<List<Count>> getAll() async {
-    final response = await _client.from(_tableName).select().order('createdAt', ascending: false);
+    final response = await _client.from(_tableName).select().order('created_at', ascending: false);
     return (response as List).map((json) => Count.fromJson(json)).toList();
   }
 
   Future<List<Count>> getByProductId(int productId) async {
-    final response = await _client.from(_tableName).select().eq('productId', productId).order('createdAt', ascending: false);
+    final response = await _client.from(_tableName).select().eq('product_id', productId).order('created_at', ascending: false);
     return (response as List).map((json) => Count.fromJson(json)).toList();
   }
 
@@ -34,11 +34,11 @@ class CountRepository {
     final now = DateTime.now();
     final data = {
       'title': title,
-      'totalWeight': totalWeight,
-      'productId': productId,
-      'countResult': countResult,
-      'operatorId': operatorId,
-      'updatedAt': now.toIso8601String(),
+      'total_weight': totalWeight,
+      'product_id': productId,
+      'count_result': countResult,
+      'operator_id': operatorId,
+      'updated_at': now.toIso8601String(),
     };
     final response = await _client.from(_tableName).insert(data).select().single();
     return Count.fromJson(response);
@@ -52,12 +52,12 @@ class CountRepository {
     int? operatorId,
   }) async {
     final data = <String, dynamic>{
-      'updatedAt': DateTime.now().toIso8601String(),
+      'updated_at': DateTime.now().toIso8601String(),
     };
     if (title != null) data['title'] = title;
-    if (totalWeight != null) data['totalWeight'] = totalWeight;
-    if (countResult != null) data['countResult'] = countResult;
-    if (operatorId != null) data['operatorId'] = operatorId;
+    if (totalWeight != null) data['total_weight'] = totalWeight;
+    if (countResult != null) data['count_result'] = countResult;
+    if (operatorId != null) data['operator_id'] = operatorId;
 
     final response = await _client.from(_tableName).update(data).eq('id', id).select().single();
     return Count.fromJson(response);

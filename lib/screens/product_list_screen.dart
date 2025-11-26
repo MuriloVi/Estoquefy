@@ -56,36 +56,43 @@ class ProductListScreen extends ConsumerWidget {
           );
         },
         loading: () => const LoadingWidget(message: 'Carregando produtos...'),
-        error: (error, stack) => Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(
-                Icons.error_outline,
-                size: 64,
-                color: Colors.red,
+        error: (error, stack) {
+          print('Erro completo: $error');
+          print('Stack trace: $stack');
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.error_outline,
+                    size: 64,
+                    color: Colors.red,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Erro ao carregar produtos',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    error.toString(),
+                    style: Theme.of(context).textTheme.bodySmall,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {
+                      ref.invalidate(productListProvider);
+                    },
+                    child: const Text('Tentar novamente'),
+                  ),
+                ],
               ),
-              const SizedBox(height: 16),
-              Text(
-                'Erro ao carregar produtos',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                error.toString(),
-                style: Theme.of(context).textTheme.bodySmall,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  ref.invalidate(productListProvider);
-                },
-                child: const Text('Tentar novamente'),
-              ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
