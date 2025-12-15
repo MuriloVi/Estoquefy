@@ -301,7 +301,7 @@ class _CountByIdProviderElement extends AutoDisposeFutureProviderElement<Count?>
   int get id => (origin as CountByIdProvider).id;
 }
 
-String _$countCreateHash() => r'fb5eccafdc6deecff4f914d2ced1adfc28c183e1';
+String _$countCreateHash() => r'dad92a61f35b36e2c0ad1b6d17096e59ccdc880c';
 
 /// See also [CountCreate].
 @ProviderFor(CountCreate)
@@ -317,7 +317,7 @@ final countCreateProvider =
     );
 
 typedef _$CountCreate = AutoDisposeAsyncNotifier<Count>;
-String _$countUpdateHash() => r'0cb88f6553d419af5348996fd1c415ca67abb57c';
+String _$countUpdateHash() => r'0f907820482ed9f684e775099a08539765e685e5';
 
 /// See also [CountUpdate].
 @ProviderFor(CountUpdate)

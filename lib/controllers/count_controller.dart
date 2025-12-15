@@ -31,7 +31,15 @@ Future<Count?> countById(CountByIdRef ref, int id) async {
 class CountCreate extends _$CountCreate {
   @override
   FutureOr<Count> build() async {
-    throw UnimplementedError();
+    return Future.value(Count(
+      id: 0,
+      createdAt: DateTime.now(),
+      title: '',
+      totalWeight: 0,
+      updatedAt: DateTime.now(),
+      productId: 0,
+      countResult: 0,
+    ));
   }
 
   Future<Count> create({
@@ -63,7 +71,15 @@ class CountCreate extends _$CountCreate {
 class CountUpdate extends _$CountUpdate {
   @override
   FutureOr<Count> build() async {
-    throw UnimplementedError();
+    return Future.value(Count(
+      id: 0,
+      createdAt: DateTime.now(),
+      title: '',
+      totalWeight: 0,
+      updatedAt: DateTime.now(),
+      productId: 0,
+      countResult: 0,
+    ));
   }
 
   Future<Count> updateCount({

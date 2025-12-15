@@ -181,7 +181,7 @@ class _ProductByIdProviderElement
   int get id => (origin as ProductByIdProvider).id;
 }
 
-String _$productCreateHash() => r'04e149187e3e8cde223a7ae40f0455af7d0a86fa';
+String _$productCreateHash() => r'3db0589293d8293d64280827ddfcf62fed8fdee7';
 
 /// See also [ProductCreate].
 @ProviderFor(ProductCreate)
@@ -197,7 +197,7 @@ final productCreateProvider =
     );
 
 typedef _$ProductCreate = AutoDisposeAsyncNotifier<Product>;
-String _$productUpdateHash() => r'7fe4e77e498510f948c7c700414f16b7f67d0de5';
+String _$productUpdateHash() => r'd5370cad5a3c2153ce0a1786f53ef6f9c80ef66f';
 
 /// See also [ProductUpdate].
 @ProviderFor(ProductUpdate)

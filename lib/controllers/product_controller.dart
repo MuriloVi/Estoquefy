@@ -25,7 +25,13 @@ Future<Product?> productById(ProductByIdRef ref, int id) async {
 class ProductCreate extends _$ProductCreate {
   @override
   FutureOr<Product> build() async {
-    throw UnimplementedError();
+    return Future.value(Product(
+      id: 0,
+      createdAt: DateTime.now(),
+      title: '',
+      description: '',
+      weight: 0,
+    ));
   }
 
   Future<Product> create({
@@ -52,7 +58,13 @@ class ProductCreate extends _$ProductCreate {
 class ProductUpdate extends _$ProductUpdate {
   @override
   FutureOr<Product> build() async {
-    throw UnimplementedError();
+    return Future.value(Product(
+      id: 0,
+      createdAt: DateTime.now(),
+      title: '',
+      description: '',
+      weight: 0,
+    ));
   }
 
   Future<Product> updateProduct({

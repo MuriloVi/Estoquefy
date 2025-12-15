@@ -32,14 +32,16 @@ class CountRepository {
     int? operatorId,
   }) async {
     final now = DateTime.now();
-    final data = {
+    final data = <String, dynamic>{
       'title': title,
       'total_weight': totalWeight,
       'product_id': productId,
       'count_result': countResult,
-      'operator_id': operatorId,
       'updated_at': now.toIso8601String(),
     };
+    if (operatorId != null) {
+      data['operator_id'] = operatorId;
+    }
     final response = await _client.from(_tableName).insert(data).select().single();
     return Count.fromJson(response);
   }
@@ -57,7 +59,11 @@ class CountRepository {
     if (title != null) data['title'] = title;
     if (totalWeight != null) data['total_weight'] = totalWeight;
     if (countResult != null) data['count_result'] = countResult;
-    if (operatorId != null) data['operator_id'] = operatorId;
+    if (operatorId != null) {
+      data['operator_id'] = operatorId;
+    } else {
+      data['operator_id'] = null;
+    }
 
     final response = await _client.from(_tableName).update(data).eq('id', id).select().single();
     return Count.fromJson(response);
