@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../models/product.dart';
 
 class ProductListItem extends StatelessWidget {
@@ -39,12 +40,7 @@ class ProductListItem extends StatelessWidget {
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (onEdit != null)
-              IconButton(
-                icon: const Icon(Icons.edit),
-                onPressed: onEdit,
-                tooltip: 'Editar',
-              ),
+           
             if (onDelete != null)
               IconButton(
                 icon: const Icon(Icons.delete),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../controllers/product_controller.dart';
-import '../widgets/loading_widget.dart';
 import '../widgets/empty_state_widget.dart';
+import '../widgets/loading_widget.dart';
 import '../widgets/product_list_item.dart';
 import 'product_form_screen.dart';
+import 'count_list_screen.dart';
 
 class ProductListScreen extends ConsumerWidget {
   const ProductListScreen({super.key});
@@ -37,7 +39,12 @@ class ProductListScreen extends ConsumerWidget {
                 return ProductListItem(
                   product: product,
                   onTap: () {
-                    // TODO: Navegar para detalhes do produto
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CountListScreen(productId: product.id),
+                      ),
+                    );
                   },
                   onEdit: () {
                     Navigator.push(
@@ -57,8 +64,6 @@ class ProductListScreen extends ConsumerWidget {
         },
         loading: () => const LoadingWidget(message: 'Carregando produtos...'),
         error: (error, stack) {
-          print('Erro completo: $error');
-          print('Stack trace: $stack');
           return Center(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
