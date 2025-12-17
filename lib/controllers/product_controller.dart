@@ -1,22 +1,23 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../models/product.dart';
 import '../repositories/product_repository.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'product_controller.g.dart';
 
 @riverpod
-ProductRepository productRepository(ProductRepositoryRef ref) {
+ProductRepository productRepository(Ref ref) {
   return ProductRepository();
 }
 
 @riverpod
-Future<List<Product>> productList(ProductListRef ref) async {
+Future<List<Product>> productList(Ref ref) async {
   final repository = ref.watch(productRepositoryProvider);
   return repository.getAll();
 }
 
 @riverpod
-Future<Product?> productById(ProductByIdRef ref, int id) async {
+Future<Product?> productById(Ref ref, int id) async {
   final repository = ref.watch(productRepositoryProvider);
   return repository.getById(id);
 }
