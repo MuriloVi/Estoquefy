@@ -1,28 +1,29 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../models/count.dart';
 import '../repositories/count_repository.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'count_controller.g.dart';
 
 @riverpod
-CountRepository countRepository(CountRepositoryRef ref) {
+CountRepository countRepository(Ref ref) {
   return CountRepository();
 }
 
 @riverpod
-Future<List<Count>> countList(CountListRef ref) async {
+Future<List<Count>> countList(Ref ref) async {
   final repository = ref.watch(countRepositoryProvider);
   return repository.getAll();
 }
 
 @riverpod
-Future<List<Count>> countListByProductId(CountListByProductIdRef ref, int productId) async {
+Future<List<Count>> countListByProductId(Ref ref, int productId) async {
   final repository = ref.watch(countRepositoryProvider);
   return repository.getByProductId(productId);
 }
 
 @riverpod
-Future<Count?> countById(CountByIdRef ref, int id) async {
+Future<Count?> countById(Ref ref, int id) async {
   final repository = ref.watch(countRepositoryProvider);
   return repository.getById(id);
 }
