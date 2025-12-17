@@ -22,26 +22,26 @@ class Count {
   factory Count.fromJson(Map<String, dynamic> json) {
     return Count(
       id: json['id'] as int,
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String),
       title: json['title'] as String,
-      totalWeight: json['totalWeight'] as int,
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
-      productId: json['productId'] as int,
-      countResult: json['countResult'] as int,
-      operatorId: json['operatorId'] as int?,
+      totalWeight: json['total_weight'] as int,
+      updatedAt: DateTime.parse(json['updated_at'] as String),
+      productId: json['product_id'] as int,
+      countResult: json['count_result'] as int,
+      operatorId: json['operator_id'] as int?,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'createdAt': createdAt.toIso8601String(),
+      'created_at': createdAt.toIso8601String(),
       'title': title,
-      'totalWeight': totalWeight,
-      'updatedAt': updatedAt.toIso8601String(),
-      'productId': productId,
-      'countResult': countResult,
-      'operatorId': operatorId,
+      'total_weight': totalWeight,
+      'updated_at': updatedAt.toIso8601String(),
+      'product_id': productId,
+      'count_result': countResult,
+      'operator_id': operatorId,
     };
   }
 

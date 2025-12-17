@@ -16,7 +16,7 @@ class Product {
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
       id: json['id'] as int,
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String),
       title: json['title'] as String,
       description: json['description'] as String,
       weight: (json['weight'] as num).toDouble(),
@@ -26,7 +26,7 @@ class Product {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'createdAt': createdAt.toIso8601String(),
+      'created_at': createdAt.toIso8601String(),
       'title': title,
       'description': description,
       'weight': weight,
